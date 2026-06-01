@@ -25,7 +25,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/conspiracys/6a1d32e8579ab374642c59eb/like
+POST http://localhost:3000/conspiracys/6a1d9caf59a6b5a0482f793c/like
 
 ###
 POST http://localhost:3000/conspiracys/6a1c88af206015279f313410/disLike
