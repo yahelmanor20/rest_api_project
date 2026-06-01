@@ -9,8 +9,7 @@ POST http://localhost:3000/conspiracys
 Content-Type: application/json
 
 {
-    "text":"cosnpiracy",
-    "likes":10
+    "text":"cosnpiracy"
 }
 
 ###
@@ -45,3 +44,8 @@ GET http://localhost:3000/conspiracys?sort=likes
 
 ### 
 POST http://localhost:3000/conspiracys/generate
+Content-Type: application/json
+
+{
+
+}

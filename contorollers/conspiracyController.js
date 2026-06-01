@@ -43,10 +43,10 @@ const getConspiracyById = async(req, res)=>{
     }
 }
 const createNewConspiracy = async(req, res)=>{
-    console.log("HI")
     const conspiracy  = new Conspiracy({
     text: req.body.text,
-    likes: req.body.likes
+    likes: req.body.likes ?? 0,
+    disLikes: req.body.disLikes ?? 0
     });
     try {
         const newConspiracy = await conspiracy.save();
@@ -91,12 +91,21 @@ const addComment = async(req, res) => {
   }
 }
 const generateConspiracyController = async (req, res) => {
-  const text = generateConspiracy();
+    const text = generateConspiracy();
 
-  res.status(201).json({
-    conspiracy: text,
-  });
-};
+    const conspiracy = new Conspiracy({
+    text: text,
+    likes: req.body.likes ?? 0,
+    disLikes: req.body.disLikes ?? 0
+    });
+
+    try {
+    const newConspiracy = await conspiracy.save();
+    res.status(201).json(newConspiracy);
+    } catch (error) {
+    res.status(400).json({ message: error.message });
+    }
+}
 const updateConspiracy = async(req, res) =>{
   if (req.body.text != null) {
     res.conspiracy.text = req.body.text
@@ -105,11 +114,11 @@ const updateConspiracy = async(req, res) =>{
     res.conspiracy.likes = req.body.likes
   }
   if (req.body.disLikes != null) {
-    res.conspiracy.likes = req.body.likes
-  }
-  if (req.body.comments != null) {
-    res.conspiracy.likes = req.body.likes
-  }
+  res.conspiracy.disLikes = req.body.disLikes
+}
+if (req.body.comments != null) {
+  res.conspiracy.comments = req.body.comments
+}
   
   try {
     const updatedConspiracy = await res.conspiracy.save();
