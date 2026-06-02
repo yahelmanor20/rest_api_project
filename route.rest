@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/conspiracies/6a1c879527c3fb3aadabc114
+DELETE http://localhost:5000/conspiracies/6a1d32e8579ab374642c59eb
 
 ###
 PATCH http://localhost:5000/conspiracies/6a1c88af206015279f313410

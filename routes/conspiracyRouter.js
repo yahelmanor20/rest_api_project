@@ -24,6 +24,9 @@ router.post("/generate", Contoroller.generateConspiracyController);
 //update one
 router.patch('/:id',Contoroller.getConspiracy, Contoroller.updateConspiracy);
 
+//delete one not by id
+router.delete('/', Contoroller.deletePopConspiracies);
+
 //delete one
 router.delete('/:id', Contoroller.getConspiracy, Contoroller.deleteConspiracy);
 

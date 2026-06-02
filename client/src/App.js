@@ -1,29 +1,37 @@
 import { useEffect, useState } from "react";
+import ConspiracyCard from "./components/ConspiracyCard";
+import CreateConspiracyForm from "./components/CreateConspiracyForm";
 
 function App() {
   const [conspiracies, setConspiracies] = useState([]);
 
+  const fetchConspiracies = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/conspiracies"
+      );
+
+      const data = await response.json();
+      setConspiracies(data);
+    }
+   catch (error) {
+     console.error(error);
+    }
+  };
+
   useEffect(() => {
-    fetch("http://localhost:5000/conspiracies")
-      .then((response) => response.json())
-      .then((data) => setConspiracies(data))
-      .catch((error) => console.error(error));
+    fetchConspiracies();
   }, []);
 
   return (
-    <div>
-      <h1>המערכת הקונספירטור</h1>
-
+    <>
+      <CreateConspiracyForm
+        onConspiracyCreated={fetchConspiracies}
+    />
       {conspiracies.map((conspiracy) => (
-        <div key={conspiracy._id}>
-          <h3>{conspiracy.text}</h3>
-
-          <p>
-            👍 {conspiracy.likes} | 👎 {conspiracy.disLikes}
-          </p>
-        </div>
+        <ConspiracyCard key={conspiracy.id} conspiracy={conspiracy} />
       ))}
-    </div>
+    </>
   );
 }
 

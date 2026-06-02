@@ -130,7 +130,17 @@ if (req.body.comments != null) {
 const deleteConspiracy = async(req, res)=>{
     try {
         await res.conspiracy.deleteOne();
-        res.json({message:"User Deleted"})
+        res.json({message: 'Conspiracy Deleted'})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+
+}
+const deletePopConspiracies = async(req, res)=>{
+    try {
+        const conspiracy = await Conspiracy.findOne({__v:0});
+        await conspiracy.deleteOne();
+        res.json({message: `${conspiracy.text} Conspiracy Deleted`})
     } catch (error) {
         res.status(500).json({message: error.message})
     }
@@ -147,4 +157,5 @@ module.exports = {getConspiracy,
                 disLikeConspiracy,
                 addComment,
                 generateConspiracyController,
+                deletePopConspiracies
 };
