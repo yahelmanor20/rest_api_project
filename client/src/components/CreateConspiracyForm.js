@@ -51,12 +51,11 @@ function CreateConspiracyForm({ onConspiracyCreated }) {
             const response = await fetch("http://localhost:5000/conspiracies/generate", {
                 method: "POST",
             });
-
             if (!response.ok) {
                 throw new Error('Failed to generate conspiracy')
             }
-
-            setName("");
+            const data = await response.json();
+            setName(data.text);
             await onConspiracyCreated();
         } catch (error) { 
             console.error(error);
