@@ -22,7 +22,7 @@ const getAllConspiracies = async (req, res) => {
         let query = Conspiracy.find();
 
         if (req.query.sort === 'date') {
-            query = query.sort({ createAT: -1 });
+            query = query.sort({ createAT : 1 });
         } else if (req.query.sort === 'likes') {
             query = query.sort({ likes: -1 });
         }
@@ -80,7 +80,7 @@ const addComment = async(req, res) => {
     return res.status(400).json({ message: 'Comment text is required' })
   }
   res.conspiracy.comments.push({
-    author: req.body.author || 'Anonymous',
+    author: req.body.author || 'משתמש אנונימי',
     text: req.body.text
   })
   try {

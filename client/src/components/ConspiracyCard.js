@@ -1,11 +1,7 @@
-import { useState } from "react";
-
-function ConspiracyCard({ conspiracy }) {
-  const [likes, setLikes] = useState(conspiracy.likes);
-  const [disLikes, setDisLikes] = useState(conspiracy.disLikes);
+import CommentForm from "./commentForm";
+function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
 
   const handleLike = async () => {
-    conspiracy.likes += 1;
     try {
       const response = await fetch(`http://localhost:5000/conspiracies/${conspiracy._id}/like`, {
         method: 'POST'
@@ -13,13 +9,13 @@ function ConspiracyCard({ conspiracy }) {
       if (!response.ok) {
         throw new Error('Failed to like conspiracy');
       }
-      setLikes(conspiracy.likes);
+      conspiracy.likes += 1;
+      onConspiracyUpdated();
     } catch (error) {
       console.error(error);
     }
   }
   const handleDislike = async () => {
-    conspiracy.disLikes += 1;
     try {
       const response = await fetch(`http://localhost:5000/conspiracies/${conspiracy._id}/disLike`, {
         method: 'POST'
@@ -27,7 +23,8 @@ function ConspiracyCard({ conspiracy }) {
       if (!response.ok) {
         throw new Error('Failed to dislike conspiracy');
       }
-      setDisLikes(conspiracy.disLikes);
+      conspiracy.disLikes += 1;
+      onConspiracyUpdated();  
     } catch (error) {
       console.error(error);
     }
@@ -37,15 +34,16 @@ function ConspiracyCard({ conspiracy }) {
       <h3>{conspiracy.text}</h3>
 
       <p>
-        <button onClick={handleLike}>👍 {likes}</button> | <button onClick={handleDislike}>👎 {disLikes}</button>
+        <button onClick={handleLike}>👍 {conspiracy.likes}</button> | <button onClick={handleDislike}>👎 {conspiracy.disLikes}</button>
       </p>
       <h4>תגובות</h4>
-
       {conspiracy.comments.map((comment, index) => (
-      <div key={index}>
-        <strong>{comment.author}</strong>: {comment.text}
-      </div>
+        <div key={index}>
+          <strong>{comment.author}:</strong> {comment.text}
+        </div>
       ))}
+      <CommentForm conspiracyId={conspiracy._id} onCommentAdded={onConspiracyUpdated} />
+
     </div>
   );
 }
