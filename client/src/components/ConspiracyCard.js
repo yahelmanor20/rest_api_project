@@ -1,6 +1,7 @@
+import { useState } from "react";
 import CommentForm from "./commentForm";
 function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
-
+  const [showComments, setShowComments] = useState(false);
   const handleLike = async () => {
     try {
       const response = await fetch(`http://localhost:5000/conspiracies/${conspiracy._id}/like`, {
@@ -36,14 +37,20 @@ function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
       <p>
         <button onClick={handleLike}>👍 {conspiracy.likes}</button> | <button onClick={handleDislike}>👎 {conspiracy.disLikes}</button>
       </p>
-      <h4>תגובות</h4>
-      {conspiracy.comments.map((comment, index) => (
-        <div key={index}>
-          <strong>{comment.author}:</strong> {comment.text}
+      <button onClick={() => setShowComments(!showComments)}>
+        {showComments? "הסתר תגובות": `הצג תגובות (${conspiracy.comments.length})`}
+      </button>
+      {
+        showComments &&
+        <div>
+        {conspiracy.comments.map((comment, index) => (
+          <div key={index}>
+            <strong>{comment.author}:</strong> {comment.text}
+          </div>
+        ))}
+        <CommentForm conspiracyId={conspiracy._id} onCommentAdded={onConspiracyUpdated} />
         </div>
-      ))}
-      <CommentForm conspiracyId={conspiracy._id} onCommentAdded={onConspiracyUpdated} />
-
+      }
     </div>
   );
 }

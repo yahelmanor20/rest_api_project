@@ -6,6 +6,7 @@ import SortBar from "./components/sortBar.js";
 function App() {
   const [conspiracies, setConspiracies] = useState([]);
   const [sort, onSort] = useState("date");
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   const fetchConspiracies = async (sortOption=sort) => {
     try {
@@ -27,9 +28,14 @@ function App() {
 
   return (
     <div>
-      <CreateConspiracyForm
-        onConspiracyCreated={fetchConspiracies}
-    />
+      <button onClick={() => setShowCreateForm(!showCreateForm)}>
+        + קונספירציה חדשה
+      </button> 
+      {
+      showCreateForm && (
+      <CreateConspiracyForm/>
+      )}
+  
     
       {conspiracies.map((conspiracy) => (
         <ConspiracyCard key={conspiracy.id} conspiracy={conspiracy} onConspiracyUpdated={fetchConspiracies} />
