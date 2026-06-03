@@ -40,6 +40,7 @@ function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
       <button onClick={() => setShowComments(!showComments)}>
         {showComments? "הסתר תגובות": `הצג תגובות (${conspiracy.comments.length})`}
       </button>
+      <br/>
       {
         showComments &&
         <div>
@@ -48,6 +49,7 @@ function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
             <strong>{comment.author}:</strong> {comment.text}
           </div>
         ))}
+        <br/>
         <CommentForm conspiracyId={conspiracy._id} onCommentAdded={onConspiracyUpdated} />
         </div>
       }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function CommentForm({ conspiracyId, onCommentAdded }) {
+  const [ShowAddComment, setShowAddComment] = useState(false);
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
 
@@ -36,22 +37,27 @@ function CommentForm({ conspiracyId, onCommentAdded }) {
 
   return (
     <div>
-        <h5>הוסף תגובה</h5>
-      <input
-        type="text"
-        placeholder="שם"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-        <br />
-      <input
-        type="text"
-        placeholder="תגובה"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-         <br />
-      <button onClick={handleCommentSubmit}>שלח</button>
+        <button onClick={() =>setShowAddComment(!ShowAddComment)}>{!ShowAddComment?"כתוב תגובה":"סגור"}</button>
+        {
+          ShowAddComment &&
+        <div>
+          <input
+            type="text"
+            placeholder="שם"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+            <br />
+          <input
+            type="text"
+            placeholder="תגובה"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+            <br />
+          <button onClick={handleCommentSubmit}>שלח</button>
+      </div>
+        }
     </div>
   );
 }

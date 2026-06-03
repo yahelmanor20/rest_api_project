@@ -33,7 +33,7 @@ function App() {
       </button> 
       {
       showCreateForm && (
-      <CreateConspiracyForm/>
+      <CreateConspiracyForm onConspiracyCreated={fetchConspiracies}/>
       )}
   
     
