@@ -96,14 +96,11 @@ const generateConspiracyController = async (req, res) => {
     const conspiracy = new Conspiracy({
     text: text,
     });
-    res.status(201).json(conspiracy);
-
-    // try {
-    // const newConspiracy = await conspiracy.save();
-    // res.status(201).json(newConspiracy);
-    // } catch (error) {
-    // res.status(400).json({ message: error.message });
-    // }
+    try {
+      res.json(conspiracy);
+    } catch (error) {
+    res.status(400).json({ message: error.message });
+    }
 }
 const updateConspiracy = async(req, res) =>{
   if (req.body.text != null) {
