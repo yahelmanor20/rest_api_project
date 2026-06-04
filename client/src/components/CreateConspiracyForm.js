@@ -68,6 +68,8 @@ function CreateConspiracyForm({ onConspiracyCreated }) {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="כתוב קונספירציה..."
+        rows={6}
+        
       />
         <br />
       <button onClick={handleSubmit}>פרסם</button>

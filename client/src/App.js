@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import ConspiracyCard from "./components/ConspiracyCard";
+import ConspiracyCard from "./components/ConspiracyCard/ConspiracyCard.js";
 import CreateConspiracyForm from "./components/CreateConspiracyForm";
 import SortBar from "./components/sortBar.js";
+import "./app.css"
 
 function App() {
   const [conspiracies, setConspiracies] = useState([]);
@@ -27,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="app">
       <button onClick={() => setShowCreateForm(!showCreateForm)}>
         + קונספירציה חדשה
       </button> 

@@ -37,7 +37,8 @@ function CommentForm({ conspiracyId, onCommentAdded }) {
 
   return (
     <div>
-        <button onClick={() =>setShowAddComment(!ShowAddComment)}>{!ShowAddComment?"כתוב תגובה":"סגור"}</button>
+        <button onClick={() =>setShowAddComment(!ShowAddComment)}>{!ShowAddComment?"הגב":"סגור"}</button>
+        
         {
           ShowAddComment &&
         <div>
