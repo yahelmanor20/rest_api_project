@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ConspiracyCard from "./components/ConspiracyCard/ConspiracyCard.js";
-import CreateConspiracyForm from "./components/CreateConspiracyForm";
+import CreateConspiracyForm from "./components/CreateConspiracyForm/CreateConspiracyForm.js";
 import SortBar from "./components/sortBar.js";
 import "./app.css"
 
@@ -32,7 +32,7 @@ function App() {
       <header className="header">
         <h1>הקונספירטור</h1>
         <p>
-        תתעורר כבשים! 🐑 &#60;---- אתם
+        תתעוררו כבשים! 🐑 &#60;---- אתם
         </p>
       </header>
       <button className="primary-btn" onClick={() => setShowCreateForm(!showCreateForm)}>
@@ -42,7 +42,7 @@ function App() {
       showCreateForm && (
       <CreateConspiracyForm onConspiracyCreated={fetchConspiracies}/>
       )}
-  
+      <br/>
     
       {conspiracies.map((conspiracy) => (
         <ConspiracyCard key={conspiracy.id} conspiracy={conspiracy} onConspiracyUpdated={fetchConspiracies} />

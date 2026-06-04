@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./CreateConspiracyForm.css"
 function CreateConspiracyForm({ onConspiracyCreated }) {
     const [name, setName] = useState("");
     const handleSubmit = async () => {
@@ -69,12 +69,14 @@ function CreateConspiracyForm({ onConspiracyCreated }) {
         onChange={(e) => setName(e.target.value)}
         placeholder="כתוב קונספירציה..."
         rows={6}
-        
+        className="conspiracy-textarea"
       />
         <br />
-      <button onClick={handleSubmit}>פרסם</button>
-      <button onClick={handleDelete}>מחק קונספירציה</button>
-      <button onClick={handleGenerate}>צור קונספירציה אוטומטית</button>
+      <div className="actionsSubmit">
+        <button onClick={handleSubmit}>פרסם</button>
+        <button onClick={handleDelete}>מחק קונספירציה</button>
+        <button onClick={handleGenerate}>צור קונספירציה אוטומטית</button>
+      </div>
     </div>
   );
 }

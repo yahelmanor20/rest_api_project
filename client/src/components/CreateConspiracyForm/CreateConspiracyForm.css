@@ -1,0 +1,54 @@
+textarea.conspiracy-textarea {
+  background: white;
+
+  border-radius: 12px;
+  padding: 20px;
+
+  width: 95%;
+  min-height: 20px;
+  border: none;
+  outline: none;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  margin-bottom: 20px;
+
+  resize: none; 
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+textarea.conspiracy-textarea:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+textarea.conspiracy-textarea:focus {
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.18),
+    0 0 0 2px rgba(0,0,0,0.08);
+}
+
+.actionsSubmit button {
+    color: white;
+    background: #1e88e5;
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-left: 10px;
+
+    transition: 0.1s;
+}
+.actionsSubmit button:hover {
+    transform: scale(1.03);
+}
