@@ -36,7 +36,7 @@ textarea.conspiracy-textarea:focus {
 
 .actionsSubmit button {
     color: white;
-    background: #1e88e5;
+    background: rgb(92, 92, 255);
     border: none;
 
     padding: 10px 15px;

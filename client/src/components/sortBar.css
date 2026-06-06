@@ -1,0 +1,43 @@
+.sort-bar {
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.sort-bar__title {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.sort-bar__buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.sort-bar__btn {
+    border: 1px solid rgb(92, 92, 255);
+    background: white;
+    color: rgb(92, 92, 255);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.sort-bar__btn:hover {
+    transform: scale(1.05);
+}
+
+.sort-bar__btn--active {
+    background: rgb(92, 92, 255);
+    color: white;
+    font-weight: 700;
+}
+

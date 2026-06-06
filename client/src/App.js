@@ -22,6 +22,7 @@ function App() {
      console.error(error);
     }
   };
+  
 
   useEffect(() => {
     fetchConspiracies();
@@ -43,12 +44,12 @@ function App() {
       <CreateConspiracyForm onConspiracyCreated={fetchConspiracies}/>
       )}
       <br/>
-    
+
+      <SortBar onSortUpdate={fetchConspiracies} currentSort={sort}/>
+
       {conspiracies.map((conspiracy) => (
         <ConspiracyCard key={conspiracy.id} conspiracy={conspiracy} onConspiracyUpdated={fetchConspiracies} />
       ))}
-      
-      <SortBar onSortUpdate={fetchConspiracies}/>
     </div>
   );
 }

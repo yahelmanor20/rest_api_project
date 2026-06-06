@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./commentForm.css";
 
 function CommentForm({ conspiracyId, onCommentAdded }) {
   const [ShowAddComment, setShowAddComment] = useState(false);
@@ -36,27 +37,27 @@ function CommentForm({ conspiracyId, onCommentAdded }) {
 }
 
   return (
-    <div>
-        <button onClick={() =>setShowAddComment(!ShowAddComment)}>{!ShowAddComment?"הגב":"סגור"}</button>
-        
+    <div className="comment-form">
+        <button className="comment-form__toggle" onClick={() =>setShowAddComment(!ShowAddComment)}>{!ShowAddComment?"הגב":"סגור"}</button>
+
         {
           ShowAddComment &&
-        <div>
+        <div className="comment-form__box">
           <input
+            className="comment-form__input"
             type="text"
-            placeholder="שם"
+            placeholder="שם (אופציונלי)"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
-            <br />
           <input
+            className="comment-form__input"
             type="text"
-            placeholder="תגובה"
+            placeholder="כתוב תגובה..."
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-            <br />
-          <button onClick={handleCommentSubmit}>שלח</button>
+          <button className="comment-form__submit" onClick={handleCommentSubmit}>שלח</button>
       </div>
         }
     </div>

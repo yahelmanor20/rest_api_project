@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CommentForm from "../commentForm";
+import CommentForm from "../commentForm/commentForm";
 import "./ConspiracyCard.css"
 
 function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
@@ -39,19 +39,22 @@ function ConspiracyCard({ conspiracy , onConspiracyUpdated}) {
       <p className="actions">
         <button onClick={handleLike} >👍 {conspiracy.likes}</button> | <button onClick={handleDislike}>👎 {conspiracy.disLikes}</button>
       </p>
-      <button onClick={() => setShowComments(!showComments)}>
+      <button className="comments_button" onClick={() => setShowComments(!showComments)}>
         {showComments? "הסתר תגובות": `הצג תגובות (${conspiracy.comments.length})`}
       </button>
       <br/>
       {
         showComments &&
-        <div>
-        {conspiracy.comments.map((comment, index) => (
-          <div key={index}>
-            <strong>{comment.author}:</strong> {comment.text}
-          </div>
-        ))}
-        <br/>
+        <div className="comments">
+        {conspiracy.comments.length === 0
+          ? <p className="comments__empty">אין עדיין תגובות. היו הראשונים להגיב!</p>
+          : conspiracy.comments.map((comment, index) => (
+              <div key={index} className="comment-bubble">
+                <span className="comment-bubble__author">{comment.author || "אנונימי"}</span>
+                <span className="comment-bubble__text">{comment.text}</span>
+              </div>
+            ))
+        }
         <CommentForm conspiracyId={conspiracy._id} onCommentAdded={onConspiracyUpdated} />
         </div>
       }
