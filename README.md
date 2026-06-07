@@ -100,7 +100,7 @@ npm start
 
 ```text
 server/
-├── controllers/
+├── contorollers/
 ├── routes/
 ├── models/
 ├── services/
@@ -257,13 +257,10 @@ Example output:
 ```text
 src/
 ├── components/
-│   ├── ConspiracyCard.js
-│   ├── CreateConspiracyForm.js
-│   ├── ConspiracyList.js
-│   └── SortBar.js
-│
-├── services/
-│   └── api.js
+│   ├── ConspiracyCard
+│   ├── CreateConspiracyForm
+│   ├── ConspiracyList
+│   └── SortBar
 │
 ├── App.js
 └── index.js
@@ -291,6 +288,8 @@ src/
 * Backend connectivity
 * Fetching conspiracies from server
 * Rendering conspiracy list
+* sorting option
+* comment on postes and like
 
 ---
 
