@@ -303,7 +303,7 @@ Responsibilities:
 * Hold conspiracies state
 * Fetch data from backend
 * Pass data to child components
-
+* Hosting all the frontend components
 Example flow:
 
 ```text
