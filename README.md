@@ -23,6 +23,77 @@
 
 ---
 
+# התקנה והרצה (Getting Started)
+
+## דרישות מקדימות (Prerequisites)
+
+* [Node.js](https://nodejs.org/) (גרסה 18 ומעלה)
+* [MongoDB](https://www.mongodb.com/) – מקומי או חשבון [MongoDB Atlas](https://www.mongodb.com/atlas)
+* npm (מותקן יחד עם Node.js)
+
+## 1. שכפול הפרויקט (Clone)
+
+```bash
+git clone <repository-url>
+cd rest_api_project
+```
+
+## 2. הגדרת משתני סביבה (.env)
+
+צרו קובץ בשם `.env` בתיקיית השורש של הפרויקט עם התוכן הבא:
+
+```env
+DATABASE_URL=mongodb://localhost:27017/conspirator
+PORT=5000
+```
+
+> `DATABASE_URL` – כתובת ההתחברות ל-MongoDB (מקומי או Atlas).
+> `PORT` – הפורט שעליו ירוץ שרת ה-Backend.
+>
+> ⚠️ הקובץ `.env` אינו עולה ל-git (הוא מופיע ב-`.gitignore`) כי הוא מכיל מידע רגיש.
+
+## 3. התקנת התלויות (Install dependencies)
+
+יש להתקין תלויות גם ל-Backend וגם ל-Frontend:
+
+```bash
+# Backend (בתיקיית השורש)
+npm install
+
+# Frontend
+cd client
+npm install
+cd ..
+```
+
+## 4. הרצת הפרויקט (Run)
+
+### אפשרות א' – הרצת שני השרתים יחד (מומלץ)
+
+מתיקיית השורש, פקודה אחת שמריצה גם את ה-Backend וגם את ה-Frontend (באמצעות `concurrently`):
+
+```bash
+npm run dev
+```
+
+### אפשרות ב' – הרצה ידנית בשני טרמינלים נפרדים
+
+```bash
+# טרמינל 1 – Backend (שרת ה-API)
+npm run devStart
+```
+
+```bash
+# טרמינל 2 – Frontend (אפליקציית React)
+cd client
+npm start
+```
+
+* ה-Backend ירוץ על `http://localhost:5000` (לפי ה-`PORT` שהגדרתם).
+* ה-Frontend ייפתח אוטומטית בדפדפן בכתובת `http://localhost:3000`.
+
+---
+
 # Backend Architecture
 
 ## Folder Structure
