@@ -48,7 +48,7 @@ function App() {
       <SortBar onSortUpdate={fetchConspiracies} currentSort={sort}/>
 
       {conspiracies.map((conspiracy) => (
-        <ConspiracyCard key={conspiracy.id} conspiracy={conspiracy} onConspiracyUpdated={fetchConspiracies} />
+        <ConspiracyCard key={conspiracy._id} conspiracy={conspiracy} onConspiracyUpdated={fetchConspiracies} />
       ))}
     </div>
   );
